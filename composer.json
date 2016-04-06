@@ -1,0 +1,16 @@
+{
+    "name": "scherzo/scherzo-php",
+    "description": "A PHP micro-framework for static websites",
+    "keywords": ["php","micro-framework"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Aymeric Wilke",
+            "email": "aywilke@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "twig/twig": "~1.0"
+    }
+}
