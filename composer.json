@@ -1,7 +1,8 @@
 {
-    "name": "scherzo/scherzo-php",
+    "name": "AymericWilke/scherzo-php",
     "description": "A PHP micro-framework for static websites",
     "keywords": ["php","micro-framework"],
+    "homepage": "https://scherzo.io",
     "license": "MIT",
     "authors": [
         {
