@@ -1,5 +1,5 @@
 # Welcome to Scherzo!
-A PHP micro-framework for static websites
+A PHP micro-framework for static websites - Now dareboost.com 100% ready
 
 [https://scherzo.io](https://scherzo.io "https://scherzo.io")
 
