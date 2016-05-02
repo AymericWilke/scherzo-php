@@ -5,7 +5,13 @@
  */
 
 /********************************************************
-********************************************************/
+/************************ HTTPS ************************/
+if($_SERVER['HTTPS'] != 'on') {
+    header('HTTP/1.1 301 Moved Permanently');
+    header('Location: https://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
+    exit();
+}
+/*******************************************************/
 $cacheDir = '../temp/cache';
 $REQUEST = $_SERVER[REQUEST_URI];
 list($REQUEST, $gets) = explode('?', $REQUEST);
@@ -55,6 +61,10 @@ $routes = array(
 
 /*********************** RESPONSE ***********************
 ********************************************************/
+header('X-Content-Type-Options: nosniff');
+header('X-XSS-Protection: 1; mode=block');
+header('X-Frame-Options: SAMEORIGIN');
+header('Content-Security-Policy: script-src \'self\'');
 if($routes[$REQUEST]){
 	echo $twig->render($routes[$REQUEST], $twigVars);
 } else {
