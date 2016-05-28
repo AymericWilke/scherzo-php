@@ -24,12 +24,12 @@ $twigVars = array(
 );
 ```
 
-3 : And a easy-to-switch devmode to see your modifications and clear the cache automatically !
+3 : And an easy-to-switch devmode, which let you see your modifications and clear the Twig cache automatically. Simply add ```/dev``` in the URL !
 
 ###How to setup Scherzo ?
-1. Run `git clone https://github.com/AymericWilke/scherzo-php.git`
+1. Run `composer create-project aymeric-wilke/scherzo-php yourProjectName`
 2. Create a folder at the root of your project with the name "temp" and read/write access
-3. Run a `composer update` in order to get Twig
+3.  That's it, enjoy!
 
 
 ####Why Scherzo ?
