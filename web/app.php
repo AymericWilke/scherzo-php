@@ -68,6 +68,7 @@ header('Content-Security-Policy: script-src \'self\'');
 if($routes[$REQUEST]){
 	echo $twig->render($routes[$REQUEST], $twigVars);
 } else {
+	header("HTTP/1.0 404 Not Found");
 	echo $twig->render($routes['/error'], $twigVars);
 }
 /********************************************************
