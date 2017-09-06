@@ -48,7 +48,7 @@ DirectoryIndex app.php
     ExpiresByType application/x-shockwave-flash "access plus 2592000 seconds"
 </IfModule>
 <IfModule mod_headers.c>
-    <FilesMatch "\.(ico|jpe?g|png|gif|swf|css|gz)$">
+    <FilesMatch "\.(ico|jpe?g|png|gif|swf|css|gz|svg)$">
         Header set Cache-Control "max-age=2592000, public"
     </FilesMatch>
     <FilesMatch "\.(js)$">
