@@ -6,15 +6,15 @@
 
 /********************************************************
 /************************ HTTPS ************************/
-if($_SERVER['HTTPS'] != 'on') {
-    header('HTTP/1.1 301 Moved Permanently');
-    header('Location: https://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
-    exit();
-}
+// if($_SERVER['HTTPS'] != 'on') {
+//     header('HTTP/1.1 301 Moved Permanently');
+//     header('Location: https://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
+//     exit();
+// }
 /*******************************************************/
 $cacheDir = '../temp/cache';
-$REQUEST = $_SERVER[REQUEST_URI];
-list($REQUEST, $gets) = explode('?', $REQUEST);
+$REQUEST = $_SERVER['REQUEST_URI'];
+// list($REQUEST, $gets) = explode('?', $REQUEST);
 $params = explode('/', $REQUEST); array_shift($params);
 
 $params[0] == 'web' ? array_shift($params) : false;
@@ -28,8 +28,7 @@ $REQUEST = '';
 foreach($params as $param){$REQUEST .= '/'.$param;}
 $REQUEST == '' ? $REQUEST = '/' : false;
 
-include_once('../vendor/twig/twig/lib/Twig/Autoloader.php');
-Twig_Autoloader::register();
+include_once('../vendor/autoload.php');
 
 $loader = new Twig_Loader_Filesystem('../views');
 $twig = new Twig_Environment($loader, array(
@@ -61,14 +60,13 @@ $routes = array(
 
 /*********************** RESPONSE ***********************
 ********************************************************/
-header('X-Content-Type-Options: nosniff');
-header('X-XSS-Protection: 1; mode=block');
-header('X-Frame-Options: SAMEORIGIN');
-header('Content-Security-Policy: script-src \'self\'');
+// header('X-Content-Type-Options: nosniff');
+// header('X-XSS-Protection: 1; mode=block');
+// header('X-Frame-Options: SAMEORIGIN');
+// header('Content-Security-Policy: script-src \'self\'');
 if($routes[$REQUEST]){
 	echo $twig->render($routes[$REQUEST], $twigVars);
 } else {
-	header("HTTP/1.0 404 Not Found");
 	echo $twig->render($routes['/error'], $twigVars);
 }
 /********************************************************
