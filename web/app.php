@@ -63,7 +63,7 @@ $routes = array(
 header('X-Content-Type-Options: nosniff');
 header('X-XSS-Protection: 1; mode=block');
 header('X-Frame-Options: SAMEORIGIN');
-header('Content-Security-Policy: script-src \'self\' https://code.jquery.com https://cdnjs.cloudflare.com https://stackpath.bootstrapcdn.com');
+header('Content-Security-Policy: script-src \'unsafe-inline\' \'self\' https://code.jquery.com https://cdnjs.cloudflare.com https://stackpath.bootstrapcdn.com');
 if(array_key_exists($REQUEST, $routes)){
 	echo $twig->render($routes[$REQUEST], $twigVars);
 } else {
