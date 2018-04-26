@@ -14,7 +14,7 @@
 /*******************************************************/
 $cacheDir = '../temp/cache';
 $REQUEST = $_SERVER['REQUEST_URI'];
-// list($REQUEST, $gets) = explode('?', $REQUEST);
+strstr($REQUEST, '?') ? list($REQUEST, $gets) = explode('?', $REQUEST) : $gets = [];
 $params = explode('/', $REQUEST); array_shift($params);
 
 $params[0] == 'web' ? array_shift($params) : false;
@@ -60,13 +60,14 @@ $routes = array(
 
 /*********************** RESPONSE ***********************
 ********************************************************/
-// header('X-Content-Type-Options: nosniff');
-// header('X-XSS-Protection: 1; mode=block');
-// header('X-Frame-Options: SAMEORIGIN');
-// header('Content-Security-Policy: script-src \'self\'');
-if($routes[$REQUEST]){
+header('X-Content-Type-Options: nosniff');
+header('X-XSS-Protection: 1; mode=block');
+header('X-Frame-Options: SAMEORIGIN');
+header('Content-Security-Policy: script-src \'self\' https://code.jquery.com https://cdnjs.cloudflare.com https://stackpath.bootstrapcdn.com');
+if(array_key_exists($REQUEST, $routes)){
 	echo $twig->render($routes[$REQUEST], $twigVars);
 } else {
+	header("HTTP/1.0 404 Not Found");
 	echo $twig->render($routes['/error'], $twigVars);
 }
 /********************************************************
